@@ -27,7 +27,7 @@ export const RegisterResponse = (req, res, err, result) => {
             userId: result.userId,
             username: result.username
         });
-        dto.addGet('userProfile', 'http://' + req.headers.host + API + 'user-profile/' + result.username);
+        dto.addGet('userProfile', 'http://' + req.headers.host + 'api/users/' + 'user-profile/' + result.username);
         res.status(200).send(dto);
     }
 }
