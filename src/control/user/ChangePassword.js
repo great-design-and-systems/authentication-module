@@ -8,7 +8,7 @@ export default class ChangePassword {
         User.findOneAndUpdate({
             username: username
         }, {
-                password: hashPassword
+                password: hashedPassword
             }, (err) => {
                 if (!err) {
                     callback();

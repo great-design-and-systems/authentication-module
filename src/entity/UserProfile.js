@@ -1,6 +1,7 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate';
 
-const UserProfileSchema = Schema({
+const UserProfileSchema = mongoose.Schema({
     userId: {
         type: String,
         required: [true, 'User Id is required.']
@@ -16,6 +17,6 @@ const UserProfileSchema = Schema({
     avatarId: String,
     createdOn: { type: Date, default: Date.now }
 });
-const UserProfile = model('userProfile', UserProfileSchema);
-
+const UserProfile = mongoose.model('userProfile', UserProfileSchema);
+UserProfileSchema.plugin(mongoosePaginate);
 export default UserProfile;

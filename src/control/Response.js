@@ -31,3 +31,14 @@ export const RegisterResponse = (req, res, err, result) => {
         res.status(200).send(dto);
     }
 }
+
+export const SecurityCodeResponse = (code) => {
+    switch (code) {
+        case 401:
+            return new Error('User Authentication Failed.');
+        case 403:
+            return new Error('Access denied');
+        case 500:
+            return new Error('Failed to create user name');
+    }
+}

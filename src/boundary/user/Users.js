@@ -7,7 +7,7 @@ import CreateUserProfile from '../../control/user-profile/CreateUserProfile';
 import DeleteUser from '../../control/user/DeleteUser';
 import DeleteUserProfileByUserId from '../../control/user-profile/DeleteUserProfileByUserId';
 import GetUserPasswordByUsername from '../../control/user/GetUserPasswordByUsername';
-import GetUserProfileByUsername from '../../control/user/GetUserPasswordByUsername';
+import GetUserProfileByUsername from '../../control/user-profile/GetUserProfileByUsername';
 import UpdateProfile from '../../control/user-profile/UpdateProfile';
 import ValidateEmail from '../../control/user/ValidateEmail';
 import ValidateUser from '../../control/user/ValidateUser';

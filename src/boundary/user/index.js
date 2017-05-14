@@ -1,15 +1,16 @@
 import { NotFound, RegisterResponse } from '../../control/Response';
 
-import Users from './Users';
+import Users from './users';
 
 export const API = '/api/users/';
 
-export class UserResponse {
+export class UsersResource {
     constructor(app) {
+        const users = new Users();
         app.get(API + 'user-profile/:username', (req, res) => {
-            User.getUserProfileByUsername(req.params.username, (err, result) => {
+            users.getUserProfileByUsername(req.params.username, (err, result) => {
                 if (err) {
-                    res.status(404).send(NotFound('User profile'));
+                    res.status(404).send(NotFound('users profile'));
                 } else {
                     res.status(200).send(result);
                 }
@@ -17,7 +18,7 @@ export class UserResponse {
         });
 
         app.get(API + 'user-password/:username', (req, res) => {
-            User.getUserPasswordByUsername(req.params.username, (err, result) => {
+            users.getUserPasswordByUsername(req.params.username, (err, result) => {
                 if (err) {
                     res.status(404).send(NotFound('Password'));
                 } else {
@@ -29,16 +30,16 @@ export class UserResponse {
         });
 
         app.post(API + 'register', (req, res) => {
-            User.register(req.body, (err, result) => {
-                new getRegisterResponse(req, res, err, result);
+            users.register(req.body, (err, result) => {
+                RegisterResponse(req, res, err, result);
             });
         });
 
         app.delete(API + ':userId', (req, res) => {
-            User.removeUser(req.params.userId, (err, result) => {
+            users.removeUsers(req.params.userId, (err, result) => {
                 if (err) {
                     res.status(500).send({
-                        message: 'Failed to remove user id ' + req.params.id + '.'
+                        message: 'Failed to remove users id ' + req.params.id + '.'
                     });
                 } else {
                     res.status(200).send(result);
@@ -47,7 +48,7 @@ export class UserResponse {
         });
 
         app.put(API + 'change-password/:username', (req, res) => {
-            User.changePassword(req.params.username, req.body.password, (err) => {
+            users.changePassword(req.params.username, req.body.password, (err) => {
                 if (!err) {
                     res.status(200).send({
                         message: 'ok'
@@ -59,7 +60,7 @@ export class UserResponse {
         });
 
         app.put(API + 'update-profile/:username', (req, res) => {
-            User.updateProfile(req.params.username, req.body, (err) => {
+            users.updateProfile(req.params.username, req.body, (err) => {
                 if (!err) {
                     res.status(200).send({
                         message: 'ok'

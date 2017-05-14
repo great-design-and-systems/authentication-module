@@ -1,8 +1,8 @@
-import { Schema, model } from 'mongoose';
-
 import ValidateEmailFormat from '../control/user/ValidateEmailFormat';
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate';
 
-const UserSchema = Schema({
+const UserSchema = mongoose.Schema({
     username: {
         type: String,
         required: [true, 'Username is required.']
@@ -21,6 +21,6 @@ const UserSchema = Schema({
     },
     createdOn: { type: Date, default: Date.now }
 });
-
-const User = model('user', UserSchema);
+UserSchema.plugin(mongoosePaginate);
+const User = mongoose.model('user', UserSchema);
 export default User;

@@ -6,7 +6,7 @@ const PASSWORD_ITERATIONS = process.env.PASSWORD_ITERATIONS || 1;
 
 export default class HashPassword {
     constructor(password) {
-        this.hashedPassword = paswordHash.generate(password, getOptions());
+        this.hashedPassword = passwordHash.generate(password, getOptions());
     }
 
     getHashed() {

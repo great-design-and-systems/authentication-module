@@ -4,8 +4,8 @@ import User from '../../entity/User';
 
 export default class CreateUser {
     constructor(user, callback) {
-        const hashedPassword = new HashPassword(password).getHashed();
-        user.password = password;
+        const hashedPassword = new HashPassword(user.password).getHashed();
+        user.password = hashedPassword;
         User.create(user, (err, result) => {
             if (err) {
                 new AppLogger(err).error();

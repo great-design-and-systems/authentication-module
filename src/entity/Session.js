@@ -1,6 +1,7 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate';
 
-const SessionSchema = Schema({
+const SessionSchema = mongoose.Schema({
     sessionId: {
         type: String,
         required: [true, 'SessionId is required.']
@@ -11,7 +12,7 @@ const SessionSchema = Schema({
     },
     createdOn: { type: Date, default: Date.now }
 });
-
-const Session = model('session', SessionSchema);
+SessionSchema.plugin(mongoosePaginate);
+const Session = mongoose.model('session', SessionSchema);
 
 export default Session;
