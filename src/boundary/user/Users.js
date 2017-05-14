@@ -1,3 +1,5 @@
+import { InvalidEmail, InvalidUser } from '../../control/Response';
+
 import AppLogger from '../../control/AppLogger';
 import ChangePassword from '../../control/user/ChangePassword';
 import CreateUser from '../../control/user/CreateUser';
@@ -45,15 +47,11 @@ export default class Users {
                             }
                         });
                     } else {
-                        callback({
-                            message: "Invalid email"
-                        });
+                        callback(InvalidEmail());
                     }
                 });
             } else {
-                callback({
-                    message: "Invalid username"
-                });
+                callback(InvalidUser());
             }
         });
     }
