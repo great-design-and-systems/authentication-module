@@ -2,7 +2,7 @@
   "name": "authentication-module",
   "version": "1.0.0",
   "description": "Module that contains security related services",
-  "main": "index.js",
+  "main": "src/boundary/index.js",
   "dependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.16.0",
