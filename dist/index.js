@@ -8,8 +8,6 @@ var _gdsConfig = require('gds-config');
 
 var _boundary = require('./boundary/');
 
-var _boundary2 = _interopRequireDefault(_boundary);
-
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -27,7 +25,7 @@ new _gdsConfig.GDSDatabase().connect(function (errDB) {
         new _gdsConfig.GDSUtil().getLogger(function () {
             app.listen(PORT, function () {
                 global.gdsLogger.logInfo('Express is listening to port ' + PORT);
-                new _boundary2.default(app);
+                new _boundary.AuthenticationResource(app);
             });
         });
     }
