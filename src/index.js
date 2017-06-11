@@ -1,6 +1,6 @@
 import { GDSDatabase, GDSServer, GDSServices, GDSUtil } from 'gds-config';
 
-import AuthenticationResource from './boundary/';
+import { AuthenticationResource } from './boundary/';
 import express from 'express';
 
 const app = express();
