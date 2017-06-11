@@ -36,7 +36,7 @@ export class AuthenticationResource {
 export class AuthenticationResourceChain extends Chain {
     constructor() {
         super('AuthenticationResourceChain', (context, param, next) => {
-            const domain = param.domain();
+            const domain = param.domain ? param.domain() : [];
             const host = param.host();
             const protocol = param.protocol();
             const dto = new GDSDomainDTO();
@@ -53,13 +53,11 @@ export class AuthenticationResourceChain extends Chain {
             dto.addPost('validateSession', protocol + host + SESSION_API + 'validate-session/:sessionId');
             domain.push(dto);
             context.set('domain', domain);
-            context.set('host', host);
-            context.set('protocol', protocol);
             next();
         });
         this.addSpec('host', true);
-        this.addSpec('domain', true);
         this.addSpec('protocol', true);
+        this.addSpec('domain', false);
     }
 }
 

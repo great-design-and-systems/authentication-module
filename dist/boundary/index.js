@@ -52,7 +52,7 @@ var AuthenticationResourceChain = exports.AuthenticationResourceChain = function
         _classCallCheck(this, AuthenticationResourceChain);
 
         var _this = _possibleConstructorReturn(this, (AuthenticationResourceChain.__proto__ || Object.getPrototypeOf(AuthenticationResourceChain)).call(this, 'AuthenticationResourceChain', function (context, param, next) {
-            var domain = param.domain();
+            var domain = param.domain ? param.domain() : [];
             var host = param.host();
             var protocol = param.protocol();
             var dto = new _gdsConfig.GDSDomainDTO();
@@ -69,14 +69,12 @@ var AuthenticationResourceChain = exports.AuthenticationResourceChain = function
             dto.addPost('validateSession', protocol + host + _session.API + 'validate-session/:sessionId');
             domain.push(dto);
             context.set('domain', domain);
-            context.set('host', host);
-            context.set('protocol', protocol);
             next();
         }));
 
         _this.addSpec('host', true);
-        _this.addSpec('domain', true);
         _this.addSpec('protocol', true);
+        _this.addSpec('domain', false);
         return _this;
     }
 
