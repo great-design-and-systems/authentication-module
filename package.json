@@ -2,7 +2,7 @@
   "name": "authentication-module",
   "version": "1.0.0",
   "description": "Module that contains security related services",
-  "main": "src/boundary/index.js",
+  "main": "dist/boundary/index.js",
   "dependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.16.0",
@@ -32,7 +32,8 @@
     "start": "node dist/index.js",
     "container-start": "/bin/bash /app/scripts/start.sh",
     "test": "mocha --compilers js:babel-core/register --recursive",
-    "dev-test": "mocha --compilers js:babel-core/register --recursive --watch"
+    "dev-test": "mocha --compilers js:babel-core/register --recursive --watch",
+    "compile": "babel src --out-dir dist"
   },
   "repository": {
     "type": "git",

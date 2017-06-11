@@ -7,7 +7,7 @@ import { API as USER_API, UsersResource } from './user/';
 
 const protocol = (req) => {
     return req.connection.encrypted ? 'https://' : 'http://'
-}
+};
 
 export default class AuthenticationResource {
     constructor(app) {
